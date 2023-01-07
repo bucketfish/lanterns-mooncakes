@@ -12,16 +12,18 @@ onready var raycasts = {
 	
 #var pianosounds = [preload("res://audio/playersound/1.wav"), preload("res://audio/playersound/2.wav"), preload("res://audio/playersound/3.wav"), preload("res://audio/playersound/4.wav"), preload("res://audio/playersound/5.wav"), preload("res://audio/playersound/6.wav"), preload("res://audio/playersound/7.wav"), preload("res://audio/playersound/8.wav")]
 
+onready var camera = $Camera2D
+
 onready var sprite = $sprite
 onready var animtree = $animtree.get("parameters/playback")
 #constants and stuff / physics
-export (int) var speed = 450
+export (int) var speed = 500
 export (int) var gravity = 2400
 export (float, 0, 1.0) var friction = 0.5
 export (float, 0, 1.0) var acceleration = 0.15
-export (float, 0, 1.0) var jumpheight = 140
+export (float, 0, 1.0) var jumpheight = 300
 export (float, 0, 1.0) var jumpinc = 0.64
-export (float, 0, 1.0) var jgravity = 300
+export (float, 0, 1.0) var jgravity = 250
 #setting up ground variables
 var velocity = Vector2.ZERO
 var curforce = jumpheight
@@ -35,6 +37,7 @@ var wasonfloor = true
 var rng = RandomNumberGenerator.new()
 
 onready var jumpsound = $AudioStreamPlayer
+var prev_floor = true
 
 func _ready():
 	rng.randomize()
@@ -55,6 +58,7 @@ func get_input(delta):
 		
 		
 	#settle these variables first
+
 	var onfloor = raycast("floor")
 	var leftwall = false
 	var rightwall = false
@@ -109,11 +113,12 @@ func get_input(delta):
 	if Input.is_action_just_pressed("jump"):
 		if onfloor && state != "jumping":
 			set_state("jumping")
+			curforce = jumpheight
 			
 		
 	if Input.is_action_pressed("jump"):
-		if onfloor:
-			set_state("jumping")
+#		if onfloor:
+#			set_state("jumping")
 			
 		if state == "jumping":
 			velocity.y = clamp(velocity.y - curforce, -1000, 10000000)
@@ -123,10 +128,12 @@ func get_input(delta):
 			set_state("falling")
 		
 	#reseting values when hitting floor
-	if onfloor:
-		curforce = jumpheight
+#	if onfloor:
+#		curforce = jumpheight
 		
 	velocity.y = clamp(velocity.y + gravity * delta, -1000, 1000)
+	
+	
 	
 #	base.debug.text = state
 	
@@ -136,6 +143,7 @@ func _physics_process(delta):
 	velocity = move_and_slide_with_snap(velocity, snap, Vector2.UP )
 	
 	move_platform(delta, get_slide_count())
+	tween_camera()
 	
 func move_platform(delta, cols):
 	for x in cols:
@@ -143,7 +151,8 @@ func move_platform(delta, cols):
 		if i.is_in_group("platform"):
 			i.colpos = self.global_position.x - i.relpos.global_position.x
 		
-	
+func tween_camera():
+	pass
 	
 func raycast(area):
 	for i in raycasts[area]:

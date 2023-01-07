@@ -10,9 +10,9 @@ onready var tween = $Tween
 onready var relpos = $CollisionShape2D2/Position2D
 var prevpos = 0
 
-const turnfactor = 0.24
-const speed = 30
-const returnspeed = 0.1
+const turnfactor = 0.6
+const speed = 40
+const returnspeed = 0.2
 
 onready var base = get_node("/root/base")
 # Called when the node enters the scene tree for the first time.
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		
 	prevpos = newpos
 	
-	move_and_collide(Vector2())
+#	move_and_collide(Vector2())
 	
 	colpos = 0
 	
