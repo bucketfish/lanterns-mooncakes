@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
@@ -7,50 +7,163 @@
 [ext_resource path="res://lanterns/3.png" type="Texture" id=5]
 [ext_resource path="res://back/line.png" type="Texture" id=6]
 [ext_resource path="res://back/back.png" type="Texture" id=7]
+[ext_resource path="res://floor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://lanterns/stick.png" type="Texture" id=9]
+[ext_resource path="res://building/building.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2000, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 312.5, 81.5 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 540.5, 10 )
-
 [node name="base" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="lantern" parent="." instance=ExtResource( 3 )]
+[node name="room1" type="Node2D" parent="."]
+
+[node name="lantern" parent="room1" instance=ExtResource( 3 )]
 position = Vector2( 408, 82 )
 
-[node name="lantern2" parent="." instance=ExtResource( 3 )]
+[node name="lantern2" parent="room1" instance=ExtResource( 3 )]
 position = Vector2( 896, 82 )
 
-[node name="Sprite" parent="lantern2" index="0"]
+[node name="Sprite" parent="room1/lantern2" index="0"]
 texture = ExtResource( 4 )
 
-[node name="lantern3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1584, 82 )
-collision_mask = 0
+[node name="lantern4" parent="room1" instance=ExtResource( 3 )]
+position = Vector2( 2083, 75 )
 
-[node name="Sprite" parent="lantern3" index="0"]
-position = Vector2( 2, 281 )
-texture = ExtResource( 5 )
+[node name="Sprite" parent="room1/lantern4" index="0"]
+position = Vector2( 10, 401 )
 
-[node name="CollisionShape2D2" parent="lantern3" index="1"]
-position = Vector2( -0.5, 363.5 )
-shape = SubResource( 2 )
+[node name="CollisionShape2D2" parent="room1/lantern4" index="1"]
+position = Vector2( 0, 488.5 )
+
+[node name="Sprite2" type="Sprite" parent="room1/lantern4"]
+position = Vector2( 6, 256 )
+texture = ExtResource( 9 )
+
+[node name="lantern5" parent="room1" instance=ExtResource( 3 )]
+position = Vector2( 3223, 62 )
+
+[node name="Sprite" parent="room1/lantern5" index="0"]
+texture = ExtResource( 4 )
+
+[node name="floor" parent="room1" instance=ExtResource( 8 )]
+
+[node name="floor2" parent="room1" instance=ExtResource( 8 )]
+position = Vector2( 1311, 268 )
+scale = Vector2( 0.1, 1 )
+
+[node name="floor3" parent="room1" instance=ExtResource( 8 )]
+position = Vector2( 1470, 354 )
+scale = Vector2( 0.1, 1 )
+
+[node name="floor6" parent="room1" instance=ExtResource( 8 )]
+position = Vector2( 1706, 451 )
+scale = Vector2( 0.1, 1 )
+
+[node name="floor7" parent="room1" instance=ExtResource( 8 )]
+position = Vector2( 2593, 385 )
+scale = Vector2( 0.26001, 1 )
+
+[node name="floor4" parent="room1" instance=ExtResource( 8 )]
+position = Vector2( 3672, 247 )
+scale = Vector2( 0.1, 1 )
 
 [node name="line" type="TextureRect" parent="."]
 margin_left = -2.0
 margin_top = -49.0
-margin_right = 2457.0
+margin_right = 11740.0
 margin_bottom = 551.0
 texture = ExtResource( 6 )
 stretch_mode = 2
+
+[node name="death" type="Area2D" parent="."]
+position = Vector2( -86, 622 )
+scale = Vector2( 10, 1 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
+position = Vector2( 657.333, 29 )
+scale = Vector2( 0.333333, 1 )
+shape = SubResource( 1 )
+
+[node name="debug" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="respawn" type="Position2D" parent="."]
+position = Vector2( 46, 256 )
+
+[node name="building" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4198, 0 )
+scale = Vector2( -1, 1 )
+
+[node name="room2" type="Node2D" parent="."]
+position = Vector2( -264, 0 )
+
+[node name="floor6" parent="room2" instance=ExtResource( 8 )]
+position = Vector2( 4697, 432 )
+scale = Vector2( 0.369178, 0.706312 )
+
+[node name="lantern3" parent="room2" instance=ExtResource( 3 )]
+position = Vector2( 5561, 82 )
+collision_mask = 0
+
+[node name="Sprite" parent="room2/lantern3" index="0"]
+position = Vector2( 2, 281 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room2/lantern3" index="1"]
+position = Vector2( -0.5, 363.5 )
+shape = SubResource( 2 )
+
+[node name="lantern6" parent="room2" instance=ExtResource( 3 )]
+position = Vector2( 6953, 68 )
+collision_mask = 0
+
+[node name="Sprite" parent="room2/lantern6" index="0"]
+position = Vector2( 2, 281 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room2/lantern6" index="1"]
+position = Vector2( -0.5, 363.5 )
+shape = SubResource( 2 )
+
+[node name="lantern7" parent="room2" instance=ExtResource( 3 )]
+position = Vector2( 8023, 63 )
+collision_mask = 0
+
+[node name="Sprite" parent="room2/lantern7" index="0"]
+position = Vector2( 2, 393 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room2/lantern7" index="1"]
+position = Vector2( -0.5, 475.5 )
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="room2/lantern7"]
+position = Vector2( 9, 256 )
+texture = ExtResource( 9 )
+
+[node name="lantern8" parent="room2" instance=ExtResource( 3 )]
+position = Vector2( 8812, 65 )
+
+[node name="floor5" parent="room2" instance=ExtResource( 8 )]
+position = Vector2( 6251, 407 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="floor8" parent="room2" instance=ExtResource( 8 )]
+position = Vector2( 9072, 233 )
+scale = Vector2( 0.169119, 0.706312 )
 
 [node name="player" parent="." groups=["player"] instance=ExtResource( 1 )]
 position = Vector2( 67, 265 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2( 0, -40 )
+position = Vector2( 100, -40 )
 current = true
 limit_left = 0
 limit_top = 0
@@ -72,7 +185,7 @@ motion_scale = Vector2( 0.5, 0.5 )
 modulate = Color( 0.11, 0.0737, 0.0737, 1 )
 margin_left = -1907.0
 margin_top = -121.0
-margin_right = 5012.0
+margin_right = 14305.0
 margin_bottom = 479.0
 texture = ExtResource( 7 )
 stretch_mode = 2
@@ -84,45 +197,18 @@ motion_scale = Vector2( 0.7, 0.7 )
 modulate = Color( 0.264, 0.176, 0.44, 1 )
 margin_left = -1110.0
 margin_top = -177.0
-margin_right = 4202.0
+margin_right = 16854.0
 margin_bottom = 423.0
 texture = ExtResource( 7 )
 stretch_mode = 2
 
 [node name="Tween" type="Tween" parent="player"]
 
-[node name="floor" type="StaticBody2D" parent="."]
-position = Vector2( -890, 392 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2( 530.5, 0 )
-shape = SubResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="floor"]
-margin_left = -2.0
-margin_top = -10.0
-margin_right = 1071.0
-margin_bottom = 8.0
-color = Color( 0.329412, 0.2, 0.6, 1 )
-
-[node name="death" type="Area2D" parent="."]
-position = Vector2( -30, 622 )
-scale = Vector2( 3, 1 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
-position = Vector2( 530.5, 0 )
-shape = SubResource( 1 )
-
-[node name="debug" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-
-[node name="respawn" type="Position2D" parent="."]
-position = Vector2( 128, 308 )
-
 [connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]
 
-[editable path="lantern2"]
-[editable path="lantern3"]
+[editable path="room1/lantern2"]
+[editable path="room1/lantern4"]
+[editable path="room1/lantern5"]
+[editable path="room2/lantern3"]
+[editable path="room2/lantern6"]
+[editable path="room2/lantern7"]
