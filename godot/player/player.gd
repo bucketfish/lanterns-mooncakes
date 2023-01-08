@@ -10,9 +10,11 @@ onready var raycasts = {
 #	"right": [$"raycasts/7", $"raycasts/8", $"raycasts/9"]
 	}
 	
+	
+var gots = []
 #var pianosounds = [preload("res://audio/playersound/1.wav"), preload("res://audio/playersound/2.wav"), preload("res://audio/playersound/3.wav"), preload("res://audio/playersound/4.wav"), preload("res://audio/playersound/5.wav"), preload("res://audio/playersound/6.wav"), preload("res://audio/playersound/7.wav"), preload("res://audio/playersound/8.wav")]
 
-var candouble = true
+var candouble = false
 var doubled = false
 
 onready var camera = $Camera2D
@@ -123,7 +125,7 @@ func get_input(delta):
 			
 			curforce = jumpheight
 			
-			if !onfloor && !doubled:
+			if !onfloor && !doubled && candouble:
 				velocity.y = 0
 
 				doubled = true
@@ -157,9 +159,12 @@ func get_input(delta):
 	
 	
 	
-#	base.debug.text = state + ' ' + str(doubled)
+#	base.debug.text = state + ' ' + str(doubled) + ' ' + str(candouble)
 	
 func _physics_process(delta):
+	if !base.playermove:
+		return
+		
 	get_input(delta)
 	var snap = Vector2.DOWN if state != "jumping" else Vector2.ZERO
 	velocity = move_and_slide_with_snap(velocity, snap, Vector2.UP )
@@ -186,3 +191,9 @@ func set_state(new):
 	state = new
 	animtree.travel(state)
 	
+
+func pickup(item):
+	if !(item in gots):
+		gots.append(item)
+		$Label.text = "you got some " + item + "!"
+		$text.play("show")

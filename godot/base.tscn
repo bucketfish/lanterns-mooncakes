@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
@@ -11,9 +11,235 @@
 [ext_resource path="res://lanterns/stick.png" type="Texture" id=9]
 [ext_resource path="res://building/building.tscn" type="PackedScene" id=10]
 [ext_resource path="res://building/building.png" type="Texture" id=11]
+[ext_resource path="res://checkpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://building/flour.png" type="Texture" id=13]
+[ext_resource path="res://building/egg.png" type="Texture" id=14]
+[ext_resource path="res://building/sugar.png" type="Texture" id=15]
+[ext_resource path="res://cutscenes/intro.png" type="Texture" id=16]
+[ext_resource path="res://intro.gd" type="Script" id=17]
+[ext_resource path="res://christmas lights.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://cutscenes/cat0001.png" type="Texture" id=19]
+[ext_resource path="res://cutscenes/cat0000.png" type="Texture" id=20]
+[ext_resource path="res://cutscenes/end0000.png" type="Texture" id=21]
+[ext_resource path="res://cutscenes/end0001.png" type="Texture" id=22]
+[ext_resource path="res://font.tres" type="DynamicFont" id=23]
+[ext_resource path="res://mooncake.png" type="Texture" id=24]
+[ext_resource path="res://back/skyline.png" type="Texture" id=25]
+[ext_resource path="res://back/moon.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 312.5, 81.5 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "1"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "2"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("end:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "end"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("end:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=9]
+size = 90
+font_data = ExtResource( 18 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("press space to start:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 347, 463 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "space"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("press space to start:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 347, 493 ), Vector2( 347, 510 ) ]
+}
+
+[sub_resource type="DynamicFont" id=12]
+size = 48
+font_data = ExtResource( 18 )
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "fade"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="base" type="Node2D"]
 script = ExtResource( 2 )
@@ -82,6 +308,13 @@ scale = Vector2( 0.1, 1 )
 [node name="building" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4198, 0 )
 scale = Vector2( -1, 1 )
+itemname = "flour"
+
+[node name="Sprite" type="Sprite" parent="building"]
+position = Vector2( -448, 0 )
+texture = ExtResource( 13 )
+centered = false
+flip_h = true
 
 [node name="room2" type="Node2D" parent="."]
 position = Vector2( -264, 0 )
@@ -115,7 +348,8 @@ position = Vector2( -0.5, 363.5 )
 shape = SubResource( 2 )
 
 [node name="lantern7" parent="room2" instance=ExtResource( 3 )]
-position = Vector2( 8023, 63 )
+position = Vector2( 7919, 63 )
+rotation = -7.28042e-05
 collision_mask = 0
 
 [node name="Sprite" parent="room2/lantern7" index="0"]
@@ -131,36 +365,44 @@ position = Vector2( 9, 256 )
 texture = ExtResource( 9 )
 
 [node name="lantern8" parent="room2" instance=ExtResource( 3 )]
-position = Vector2( 8812, 65 )
+position = Vector2( 8617, 65 )
+rotation = -7.28042e-05
 
 [node name="floor5" parent="room2" instance=ExtResource( 8 )]
 position = Vector2( 6251, 407 )
+rotation = -7.28042e-05
 scale = Vector2( 0.169119, 0.706312 )
 
 [node name="floor8" parent="room2" instance=ExtResource( 8 )]
-position = Vector2( 9072, 233 )
+position = Vector2( 8877, 233 )
+rotation = -7.28042e-05
 scale = Vector2( 0.169119, 0.706312 )
 
 [node name="lantern2" parent="room2" instance=ExtResource( 3 )]
-position = Vector2( 9546, 72 )
+position = Vector2( 9351, 72 )
+rotation = -7.28042e-05
 
 [node name="Sprite" parent="room2/lantern2" index="0"]
 texture = ExtResource( 4 )
 
 [node name="floor9" parent="room2" instance=ExtResource( 8 )]
-position = Vector2( 9825, 233 )
+position = Vector2( 9630, 233 )
+rotation = -7.28042e-05
 scale = Vector2( 0.169119, 0.706312 )
 
 [node name="floor10" parent="room2" instance=ExtResource( 8 )]
-position = Vector2( 10091, 376 )
+position = Vector2( 9896, 376 )
+rotation = -7.28042e-05
 scale = Vector2( 0.169119, 0.706312 )
 
 [node name="floor11" parent="room2" instance=ExtResource( 8 )]
-position = Vector2( 11233, 432 )
+position = Vector2( 11038, 432 )
+rotation = -7.28042e-05
 scale = Vector2( 0.169119, 0.706312 )
 
 [node name="lantern9" parent="room2" instance=ExtResource( 3 )]
-position = Vector2( 10717, 66 )
+position = Vector2( 10522, 66 )
+rotation = -7.28042e-05
 collision_mask = 0
 
 [node name="Sprite" parent="room2/lantern9" index="0"]
@@ -176,12 +418,42 @@ position = Vector2( 9, 256 )
 texture = ExtResource( 9 )
 
 [node name="building2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 11382, 0 )
-rotation = 3.14159
+position = Vector2( 11187, 0 )
+rotation = 3.14152
 scale = Vector2( -1, -1 )
+itemname = "eggs"
+
+[node name="CollisionShape2D5" parent="building2/StaticBody2D" index="1"]
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="building2"]
+margin_left = 293.0
+margin_top = 306.0
+margin_right = 403.0
+margin_bottom = 422.0
+color = Color( 0.27451, 0.294118, 0.333333, 1 )
+
+[node name="Sprite" type="Sprite" parent="building2"]
+position = Vector2( -416, -6.28142e-05 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Label" type="Label" parent="building2"]
+margin_left = 178.987
+margin_top = 183.013
+margin_right = 389.987
+margin_bottom = 300.013
+custom_fonts/font = ExtResource( 23 )
+text = "psst: you can double jump now!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="room3" type="Node2D" parent="."]
-position = Vector2( 11974, 0 )
+position = Vector2( 11779, 0 )
+rotation = -7.28042e-05
 
 [node name="floor5" parent="room3" instance=ExtResource( 8 )]
 position = Vector2( -171, 244 )
@@ -283,11 +555,20 @@ position = Vector2( 10797, 247 )
 scale = Vector2( 0.18, 1 )
 
 [node name="building3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 23383, 0 )
+position = Vector2( 23188, 0 )
+rotation = -7.28042e-05
 scale = Vector2( -1, 1 )
+itemname = "sugar"
+
+[node name="Sprite" type="Sprite" parent="building3"]
+position = Vector2( -472, 0 )
+texture = ExtResource( 15 )
+centered = false
+flip_h = true
 
 [node name="room4" type="Node2D" parent="."]
-position = Vector2( 23763, 24 )
+position = Vector2( 23568, 24 )
+rotation = -7.28042e-05
 
 [node name="floor5" parent="room4" instance=ExtResource( 8 )]
 position = Vector2( -151, 408 )
@@ -415,12 +696,33 @@ position = Vector2( 10376, 406 )
 scale = Vector2( 0.131199, 0.498877 )
 
 [node name="building4" parent="." instance=ExtResource( 10 )]
-position = Vector2( 34506, 0 )
-rotation = 3.14159
+position = Vector2( 34311, 0 )
+rotation = 3.14152
 scale = Vector2( -1, -1 )
 
+[node name="Area2D" parent="building4" index="2"]
+position = Vector2( 13, -47.0128 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 34317, 247 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 6 )
+playing = true
+flip_h = true
+
 [node name="respawn" type="Position2D" parent="."]
-position = Vector2( 31196, 213 )
+position = Vector2( 97, 184 )
+rotation = -7.28042e-05
+
+[node name="checkpoint" parent="." instance=ExtResource( 12 )]
+
+[node name="checkpoint2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 11637, 161 )
+rotation = -7.28042e-05
+
+[node name="checkpoint3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 23445, 322 )
+rotation = -7.28042e-05
 
 [node name="line" type="TextureRect" parent="."]
 margin_left = -2.0
@@ -431,14 +733,14 @@ texture = ExtResource( 6 )
 stretch_mode = 2
 
 [node name="player" parent="." groups=["player"] instance=ExtResource( 1 )]
-position = Vector2( 34292, 356 )
+position = Vector2( 72, 112 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2( 100, -40 )
+position = Vector2( 268, -40 )
 current = true
 limit_left = 0
 limit_top = 0
-limit_right = 34902
+limit_right = 34709
 limit_bottom = 0
 drag_margin_h_enabled = true
 smoothing_enabled = true
@@ -450,14 +752,47 @@ drag_margin_bottom = 0.1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="player/Camera2D"]
 
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="player/Camera2D/ParallaxBackground"]
+position = Vector2( -399, -5 )
+motion_scale = Vector2( 0.025, 0 )
+
+[node name="Moon" type="Sprite" parent="player/Camera2D/ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 905, -179 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 26 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="player/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+
+[node name="build" type="TextureRect" parent="player/Camera2D/ParallaxBackground/ParallaxLayer4"]
+modulate = Color( 0.276133, 0.228, 0.38, 1 )
+margin_left = -1747.0
+margin_top = -194.0
+margin_right = 45691.0
+margin_bottom = 406.0
+texture = ExtResource( 25 )
+stretch_mode = 2
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="player/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="build" type="TextureRect" parent="player/Camera2D/ParallaxBackground/ParallaxLayer3"]
+modulate = Color( 0.233132, 0.1419, 0.43, 1 )
+margin_left = -1907.0
+margin_top = -146.0
+margin_right = 45691.0
+margin_bottom = 454.0
+texture = ExtResource( 25 )
+stretch_mode = 2
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="player/Camera2D/ParallaxBackground"]
 motion_scale = Vector2( 0.5, 0.5 )
 
-[node name="TextureRect2" type="TextureRect" parent="player/Camera2D/ParallaxBackground/ParallaxLayer2"]
+[node name="backer" type="TextureRect" parent="player/Camera2D/ParallaxBackground/ParallaxLayer2"]
 modulate = Color( 0.11, 0.0737, 0.0737, 1 )
 margin_left = -1907.0
 margin_top = -121.0
-margin_right = 14305.0
+margin_right = 45691.0
 margin_bottom = 479.0
 texture = ExtResource( 7 )
 stretch_mode = 2
@@ -469,7 +804,7 @@ motion_scale = Vector2( 0.7, 0.7 )
 modulate = Color( 0.264, 0.176, 0.44, 1 )
 margin_left = -1110.0
 margin_top = -177.0
-margin_right = 16854.0
+margin_right = 41283.0
 margin_bottom = 423.0
 texture = ExtResource( 7 )
 stretch_mode = 2
@@ -477,6 +812,62 @@ stretch_mode = 2
 [node name="Tween" type="Tween" parent="player"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="intro" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.27451, 0.294118, 0.333333, 1 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/intro"]
+visible = false
+position = Vector2( 512, 242 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 16 )
+hframes = 3
+vframes = 3
+
+[node name="anim" type="AnimationPlayer" parent="CanvasLayer/intro"]
+autoplay = "1"
+anims/1 = SubResource( 3 )
+anims/2 = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+anims/end = SubResource( 8 )
+
+[node name="overlay" type="Sprite" parent="CanvasLayer/intro"]
+visible = false
+position = Vector2( 512, 242 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 16 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="text" type="Label" parent="CanvasLayer/intro"]
+margin_left = 50.0
+margin_top = 497.0
+margin_right = 974.0
+margin_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 23 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tween" type="Tween" parent="CanvasLayer/intro"]
+
+[node name="end" type="AnimatedSprite" parent="CanvasLayer/intro"]
+visible = false
+position = Vector2( 465, 199 )
+frames = SubResource( 7 )
+frame = 1
+playing = true
+flip_h = true
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -487,6 +878,114 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "ksljgksg"
 
+[node name="start" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.14902, 0.0509804, 0.34902, 1 )
+
+[node name="title" type="Label" parent="CanvasLayer/start"]
+margin_left = 30.0
+margin_top = 105.0
+margin_right = 988.0
+margin_bottom = 357.0
+custom_colors/font_color = Color( 0.654902, 0.690196, 0.784314, 1 )
+custom_colors/font_color_shadow = Color( 0.329412, 0.2, 0.6, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/line_spacing = -21
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "lanterns
+&
+mooncakes"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/start"]
+margin_left = 112.0
+margin_top = 348.0
+margin_right = 907.0
+margin_bottom = 448.0
+texture = ExtResource( 24 )
+stretch_mode = 2
+
+[node name="press space to start" type="Label" parent="CanvasLayer/start"]
+margin_left = 347.0
+margin_top = 463.0
+margin_right = 681.0
+margin_bottom = 500.02
+custom_fonts/font = ExtResource( 23 )
+text = "press space to begin!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/start"]
+autoplay = "space"
+anims/RESET = SubResource( 10 )
+anims/space = SubResource( 11 )
+
+[node name="end" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/end"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.14902, 0.0509804, 0.34902, 1 )
+
+[node name="title" type="Label" parent="CanvasLayer/end"]
+margin_left = 30.0
+margin_top = 153.0
+margin_right = 988.0
+margin_bottom = 405.0
+custom_colors/font_color = Color( 0.654902, 0.690196, 0.784314, 1 )
+custom_colors/font_color_shadow = Color( 0.329412, 0.2, 0.6, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/line_spacing = -21
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "thank you for playing!"
+align = 1
+
+[node name="title2" type="Label" parent="CanvasLayer/end"]
+margin_left = 36.0
+margin_top = 270.0
+margin_right = 994.0
+margin_bottom = 522.0
+custom_colors/font_color = Color( 0.862745, 0.839216, 0.701961, 1 )
+custom_constants/line_spacing = -11
+custom_fonts/font = SubResource( 12 )
+text = "lanterns & mooncake
+by bucketfish
+for ludum dare 52: harvest"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/end"]
+margin_left = 112.0
+margin_top = 412.0
+margin_right = 907.0
+margin_bottom = 512.0
+texture = ExtResource( 24 )
+stretch_mode = 2
+
+[node name="fade" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/fade"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.47451, 0.545098, 0.658824, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/fade"]
+anims/RESET = SubResource( 13 )
+anims/fade = SubResource( 14 )
+
+[connection signal="body_entered" from="building2/Area2D" to="." method="_on_building2_body_entered"]
+[connection signal="body_entered" from="building4/Area2D" to="." method="_on_ending_body_entered"]
+
 [editable path="room1/lantern2"]
 [editable path="room1/lantern4"]
 [editable path="room1/lantern5"]
@@ -495,6 +994,7 @@ text = "ksljgksg"
 [editable path="room2/lantern7"]
 [editable path="room2/lantern2"]
 [editable path="room2/lantern9"]
+[editable path="building2"]
 [editable path="room3/lantern2"]
 [editable path="room3/lantern10"]
 [editable path="room3/lantern3"]
@@ -505,3 +1005,4 @@ text = "ksljgksg"
 [editable path="room4/lantern6"]
 [editable path="room4/lantern11"]
 [editable path="room4/lantern7"]
+[editable path="building4"]

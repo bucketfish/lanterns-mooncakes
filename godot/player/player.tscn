@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://christmas lights.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -218,6 +219,77 @@ graph_offset = Vector2( -452.25, 111.165 )
 [sub_resource type="CircleShape2D" id=33]
 radius = 23.0054
 
+[sub_resource type="DynamicFont" id=34]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -83.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -105, -85 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "show"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 2.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -105, -60 ), Vector2( -105, -85 ), Vector2( -105, -85 ), Vector2( -105, -60 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 2.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 1 )
@@ -267,3 +339,21 @@ cast_to = Vector2( 0, 30 )
 collision_mask = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -105.0
+margin_top = -85.0
+margin_right = 101.0
+margin_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_clip_content = true
+custom_fonts/font = SubResource( 34 )
+text = "you got some flour!"
+align = 1
+valign = 1
+
+[node name="text" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 35 )
+anims/show = SubResource( 36 )
