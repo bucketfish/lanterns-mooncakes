@@ -803,7 +803,7 @@ stretch_mode = 2
 motion_scale = Vector2( 0.7, 0.7 )
 
 [node name="TextureRect2" type="TextureRect" parent="player/Camera2D/ParallaxBackground/ParallaxLayer"]
-modulate = Color( 0.264, 0.176, 0.44, 1 )
+modulate = Color( 0.262745, 0.176471, 0.439216, 1 )
 margin_left = -1110.0
 margin_top = -177.0
 margin_right = 41283.0
@@ -948,7 +948,7 @@ margin_bottom = 522.0
 custom_colors/font_color = Color( 0.862745, 0.839216, 0.701961, 1 )
 custom_constants/line_spacing = -11
 custom_fonts/font = SubResource( 12 )
-text = "lanterns & mooncake
+text = "lanterns & mooncakes
 by bucketfish
 for ludum dare 52: harvest"
 align = 1
