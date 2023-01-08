@@ -12,6 +12,9 @@ onready var raycasts = {
 	
 #var pianosounds = [preload("res://audio/playersound/1.wav"), preload("res://audio/playersound/2.wav"), preload("res://audio/playersound/3.wav"), preload("res://audio/playersound/4.wav"), preload("res://audio/playersound/5.wav"), preload("res://audio/playersound/6.wav"), preload("res://audio/playersound/7.wav"), preload("res://audio/playersound/8.wav")]
 
+var candouble = true
+var doubled = false
+
 onready var camera = $Camera2D
 
 onready var sprite = $sprite
@@ -65,6 +68,7 @@ func get_input(delta):
 	
 	if state == "falling" && onfloor:
 		set_state("land")
+		
 #	if (onfloor) && !touching:
 #		touching = true
 #		set_state("land")
@@ -108,12 +112,21 @@ func get_input(delta):
 			
 		if onfloor:
 			set_state("idle")
+			doubled = false
 			
 	
 	if Input.is_action_just_pressed("jump"):
-		if onfloor && state != "jumping":
+		if (onfloor && state != "jumping") || (!doubled && candouble):
 			set_state("jumping")
+
+			doubled = false
+			
 			curforce = jumpheight
+			
+			if !onfloor && !doubled:
+				velocity.y = 0
+
+				doubled = true
 			
 		
 	if Input.is_action_pressed("jump"):
@@ -126,16 +139,25 @@ func get_input(delta):
 		
 		if velocity.y >= 0:
 			set_state("falling")
+			
+		if onfloor && state == "falling":
+			set_state("idle")
+			doubled = false
 		
 	#reseting values when hitting floor
-#	if onfloor:
+	if onfloor:
 #		curforce = jumpheight
+		doubled = false
 		
+	
 	velocity.y = clamp(velocity.y + gravity * delta, -1000, 1000)
 	
+	if global_position.y > 630:
+		base.respawn()
 	
 	
-#	base.debug.text = state
+	
+#	base.debug.text = state + ' ' + str(doubled)
 	
 func _physics_process(delta):
 	get_input(delta)

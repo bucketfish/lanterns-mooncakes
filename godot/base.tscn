@@ -10,15 +10,21 @@
 [ext_resource path="res://floor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://lanterns/stick.png" type="Texture" id=9]
 [ext_resource path="res://building/building.tscn" type="PackedScene" id=10]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2000, 10 )
+[ext_resource path="res://building/building.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 312.5, 81.5 )
 
 [node name="base" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Building" type="Sprite" parent="."]
+position = Vector2( -311, 333 )
+texture = ExtResource( 11 )
+
+[node name="floor5" parent="." instance=ExtResource( 8 )]
+position = Vector2( -14, -274 )
+rotation = 1.5708
 
 [node name="room1" type="Node2D" parent="."]
 
@@ -51,6 +57,7 @@ position = Vector2( 3223, 62 )
 texture = ExtResource( 4 )
 
 [node name="floor" parent="room1" instance=ExtResource( 8 )]
+position = Vector2( -890, 280 )
 
 [node name="floor2" parent="room1" instance=ExtResource( 8 )]
 position = Vector2( 1311, 268 )
@@ -71,31 +78,6 @@ scale = Vector2( 0.26001, 1 )
 [node name="floor4" parent="room1" instance=ExtResource( 8 )]
 position = Vector2( 3672, 247 )
 scale = Vector2( 0.1, 1 )
-
-[node name="line" type="TextureRect" parent="."]
-margin_left = -2.0
-margin_top = -49.0
-margin_right = 11740.0
-margin_bottom = 551.0
-texture = ExtResource( 6 )
-stretch_mode = 2
-
-[node name="death" type="Area2D" parent="."]
-position = Vector2( -86, 622 )
-scale = Vector2( 10, 1 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
-position = Vector2( 657.333, 29 )
-scale = Vector2( 0.333333, 1 )
-shape = SubResource( 1 )
-
-[node name="debug" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-
-[node name="respawn" type="Position2D" parent="."]
-position = Vector2( 46, 256 )
 
 [node name="building" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4198, 0 )
@@ -159,14 +141,304 @@ scale = Vector2( 0.169119, 0.706312 )
 position = Vector2( 9072, 233 )
 scale = Vector2( 0.169119, 0.706312 )
 
+[node name="lantern2" parent="room2" instance=ExtResource( 3 )]
+position = Vector2( 9546, 72 )
+
+[node name="Sprite" parent="room2/lantern2" index="0"]
+texture = ExtResource( 4 )
+
+[node name="floor9" parent="room2" instance=ExtResource( 8 )]
+position = Vector2( 9825, 233 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="floor10" parent="room2" instance=ExtResource( 8 )]
+position = Vector2( 10091, 376 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="floor11" parent="room2" instance=ExtResource( 8 )]
+position = Vector2( 11233, 432 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="lantern9" parent="room2" instance=ExtResource( 3 )]
+position = Vector2( 10717, 66 )
+collision_mask = 0
+
+[node name="Sprite" parent="room2/lantern9" index="0"]
+position = Vector2( 2, 393 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room2/lantern9" index="1"]
+position = Vector2( -0.5, 475.5 )
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="room2/lantern9"]
+position = Vector2( 9, 256 )
+texture = ExtResource( 9 )
+
+[node name="building2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 11382, 0 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+
+[node name="room3" type="Node2D" parent="."]
+position = Vector2( 11974, 0 )
+
+[node name="floor5" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( -171, 244 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="floor6" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 556, 250 )
+scale = Vector2( 0.3, 1 )
+
+[node name="lantern2" parent="room3" instance=ExtResource( 3 )]
+position = Vector2( 1308, 58 )
+
+[node name="Sprite" parent="room3/lantern2" index="0"]
+texture = ExtResource( 4 )
+
+[node name="floor7" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 2102, 499 )
+scale = Vector2( 0.3, 1 )
+
+[node name="lantern10" parent="room3" instance=ExtResource( 3 )]
+position = Vector2( 3224, 62 )
+collision_mask = 0
+
+[node name="Sprite" parent="room3/lantern10" index="0"]
+position = Vector2( 2, 393 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room3/lantern10" index="1"]
+position = Vector2( -0.5, 475.5 )
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="room3/lantern10"]
+position = Vector2( 9, 256 )
+texture = ExtResource( 9 )
+
+[node name="floor8" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 4105, 272 )
+scale = Vector2( 0.3, 1 )
+
+[node name="floor10" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 4416, 54 )
+rotation = 1.5708
+scale = Vector2( 0.2, 1 )
+
+[node name="floor9" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 4108, 538 )
+scale = Vector2( 0.5, 1 )
+
+[node name="floor11" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 4849, 435 )
+scale = Vector2( 0.3, 1 )
+
+[node name="lantern8" parent="room3" instance=ExtResource( 3 )]
+position = Vector2( 5568, 58 )
+
+[node name="lantern3" parent="room3" instance=ExtResource( 3 )]
+position = Vector2( 6350, 61 )
+
+[node name="Sprite" parent="room3/lantern3" index="0"]
+position = Vector2( 10, 441 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D2" parent="room3/lantern3" index="1"]
+position = Vector2( 0, 528.5 )
+
+[node name="Sprite2" type="Sprite" parent="room3/lantern3"]
+position = Vector2( 7, 264 )
+texture = ExtResource( 9 )
+
+[node name="floor12" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 7165, 568 )
+scale = Vector2( 1.02, 1 )
+
+[node name="floor13" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 8070, 383 )
+scale = Vector2( 0.18, 1 )
+
+[node name="lantern9" parent="room3" instance=ExtResource( 3 )]
+position = Vector2( 8556, 61 )
+
+[node name="floor14" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 9026, 452 )
+scale = Vector2( 0.18, 1 )
+
+[node name="lantern6" parent="room3" instance=ExtResource( 3 )]
+position = Vector2( 9883, 68 )
+collision_mask = 0
+
+[node name="Sprite" parent="room3/lantern6" index="0"]
+position = Vector2( 2, 281 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room3/lantern6" index="1"]
+position = Vector2( -0.5, 363.5 )
+shape = SubResource( 2 )
+
+[node name="floor15" parent="room3" instance=ExtResource( 8 )]
+position = Vector2( 10797, 247 )
+scale = Vector2( 0.18, 1 )
+
+[node name="building3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 23383, 0 )
+scale = Vector2( -1, 1 )
+
+[node name="room4" type="Node2D" parent="."]
+position = Vector2( 23763, 24 )
+
+[node name="floor5" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( -151, 408 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="lantern3" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 311, 35 )
+
+[node name="Sprite" parent="room4/lantern3" index="0"]
+position = Vector2( 10, 465 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D2" parent="room4/lantern3" index="1"]
+position = Vector2( 0, 552.5 )
+
+[node name="Sprite2" type="Sprite" parent="room4/lantern3"]
+position = Vector2( 7, 264 )
+texture = ExtResource( 9 )
+
+[node name="floor6" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 550, 428 )
+scale = Vector2( 0.169119, 0.706312 )
+
+[node name="floor7" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 550, 293 )
+scale = Vector2( 0.609197, 0.706312 )
+
+[node name="lantern9" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 1728, 37 )
+
+[node name="lantern10" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 2451, 48 )
+
+[node name="lantern4" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 3388, 35 )
+
+[node name="Sprite" parent="room4/lantern4" index="0"]
+position = Vector2( 10, 465 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D2" parent="room4/lantern4" index="1"]
+position = Vector2( 0, 552.5 )
+
+[node name="Sprite2" type="Sprite" parent="room4/lantern4"]
+position = Vector2( 7, 264 )
+texture = ExtResource( 9 )
+
+[node name="lantern5" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 4172, 37 )
+
+[node name="Sprite" parent="room4/lantern5" index="0"]
+position = Vector2( 10, 345 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D2" parent="room4/lantern5" index="1"]
+position = Vector2( 0, 432.5 )
+
+[node name="Sprite2" type="Sprite" parent="room4/lantern5"]
+position = Vector2( 7, 264 )
+texture = ExtResource( 9 )
+
+[node name="lantern6" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 4982, 46 )
+collision_mask = 0
+
+[node name="Sprite" parent="room4/lantern6" index="0"]
+position = Vector2( 2, 281 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room4/lantern6" index="1"]
+position = Vector2( -0.5, 363.5 )
+shape = SubResource( 2 )
+
+[node name="lantern11" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 6081, 36 )
+collision_mask = 0
+
+[node name="Sprite" parent="room4/lantern11" index="0"]
+position = Vector2( 2, 451 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" parent="room4/lantern11" index="1"]
+position = Vector2( -0.5, 533.5 )
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="room4/lantern11"]
+position = Vector2( 9, 256 )
+texture = ExtResource( 9 )
+
+[node name="floor8" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 6834, 300 )
+scale = Vector2( 0.371121, 0.498877 )
+
+[node name="floor9" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 7248, 416 )
+scale = Vector2( 0.371121, 0.498877 )
+
+[node name="floor10" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 7640, 554 )
+scale = Vector2( 0.371121, 0.498877 )
+
+[node name="lantern7" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 8405, 35 )
+
+[node name="Sprite" parent="room4/lantern7" index="0"]
+position = Vector2( 10, 465 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D2" parent="room4/lantern7" index="1"]
+position = Vector2( 0, 552.5 )
+
+[node name="Sprite2" type="Sprite" parent="room4/lantern7"]
+position = Vector2( 7, 264 )
+texture = ExtResource( 9 )
+
+[node name="floor11" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 9031, 232 )
+scale = Vector2( 0.371121, 0.498877 )
+
+[node name="lantern12" parent="room4" instance=ExtResource( 3 )]
+position = Vector2( 9741, 37 )
+
+[node name="floor12" parent="room4" instance=ExtResource( 8 )]
+position = Vector2( 10376, 406 )
+scale = Vector2( 0.131199, 0.498877 )
+
+[node name="building4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 34506, 0 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+
+[node name="respawn" type="Position2D" parent="."]
+position = Vector2( 31196, 213 )
+
+[node name="line" type="TextureRect" parent="."]
+margin_left = -2.0
+margin_top = -49.0
+margin_right = 38283.0
+margin_bottom = 551.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+
 [node name="player" parent="." groups=["player"] instance=ExtResource( 1 )]
-position = Vector2( 67, 265 )
+position = Vector2( 34292, 356 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2( 100, -40 )
 current = true
 limit_left = 0
 limit_top = 0
+limit_right = 34902
 limit_bottom = 0
 drag_margin_h_enabled = true
 smoothing_enabled = true
@@ -204,7 +476,16 @@ stretch_mode = 2
 
 [node name="Tween" type="Tween" parent="player"]
 
-[connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="debug" type="Label" parent="CanvasLayer/Control"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "ksljgksg"
 
 [editable path="room1/lantern2"]
 [editable path="room1/lantern4"]
@@ -212,3 +493,15 @@ stretch_mode = 2
 [editable path="room2/lantern3"]
 [editable path="room2/lantern6"]
 [editable path="room2/lantern7"]
+[editable path="room2/lantern2"]
+[editable path="room2/lantern9"]
+[editable path="room3/lantern2"]
+[editable path="room3/lantern10"]
+[editable path="room3/lantern3"]
+[editable path="room3/lantern6"]
+[editable path="room4/lantern3"]
+[editable path="room4/lantern4"]
+[editable path="room4/lantern5"]
+[editable path="room4/lantern6"]
+[editable path="room4/lantern11"]
+[editable path="room4/lantern7"]
