@@ -59,7 +59,6 @@ func _on_ending_body_entered(body):
 		intro.usingend = true 
 		fade.play("fade")
 		yield(fade, "animation_finished")
-		intro.visible = false
 		intro.visible = true
 		fade.play_backwards("fade")
 		yield(fade, "animation_finished")

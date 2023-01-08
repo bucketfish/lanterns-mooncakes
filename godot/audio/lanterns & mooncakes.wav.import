@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lanterns & mooncakes.wav-ff939e1823349acce4a884f28357f538.sample"
+
+[deps]
+
+source_file="res://audio/lanterns & mooncakes.wav"
+dest_files=[ "res://.import/lanterns & mooncakes.wav-ff939e1823349acce4a884f28357f538.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

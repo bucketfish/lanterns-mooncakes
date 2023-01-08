@@ -1,8 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://christmas lights.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://audio/click.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/jump ig.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -339,6 +341,9 @@ cast_to = Vector2( 0, 30 )
 collision_mask = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -27.87
+pitch_scale = 0.82
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -357,3 +362,7 @@ valign = 1
 [node name="text" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 35 )
 anims/show = SubResource( 36 )
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -13.043

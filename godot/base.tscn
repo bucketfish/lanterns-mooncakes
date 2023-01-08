@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://mooncake.png" type="Texture" id=24]
 [ext_resource path="res://back/skyline.png" type="Texture" id=25]
 [ext_resource path="res://back/moon.png" type="Texture" id=26]
+[ext_resource path="res://audio/lanterns&mooncakes.wav" type="AudioStream" id=27]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 312.5, 81.5 )
@@ -298,8 +299,8 @@ position = Vector2( 1706, 451 )
 scale = Vector2( 0.1, 1 )
 
 [node name="floor7" parent="room1" instance=ExtResource( 8 )]
-position = Vector2( 2593, 385 )
-scale = Vector2( 0.26001, 1 )
+position = Vector2( 2529, 385 )
+scale = Vector2( 0.38001, 1 )
 
 [node name="floor4" parent="room1" instance=ExtResource( 8 )]
 position = Vector2( 3672, 247 )
@@ -699,6 +700,7 @@ scale = Vector2( 0.131199, 0.498877 )
 position = Vector2( 34311, 0 )
 rotation = 3.14152
 scale = Vector2( -1, -1 )
+pickup = false
 
 [node name="Area2D" parent="building4" index="2"]
 position = Vector2( 13, -47.0128 )
@@ -707,6 +709,7 @@ position = Vector2( 13, -47.0128 )
 position = Vector2( 34317, 247 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 flip_h = true
 
@@ -753,11 +756,10 @@ drag_margin_bottom = 0.1
 [node name="ParallaxBackground" type="ParallaxBackground" parent="player/Camera2D"]
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="player/Camera2D/ParallaxBackground"]
-position = Vector2( -399, -5 )
 motion_scale = Vector2( 0.025, 0 )
 
 [node name="Moon" type="Sprite" parent="player/Camera2D/ParallaxBackground/ParallaxLayer5"]
-position = Vector2( 905, -179 )
+position = Vector2( 521, -179 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 26 )
 
@@ -865,18 +867,8 @@ autowrap = true
 visible = false
 position = Vector2( 465, 199 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 flip_h = true
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="debug" type="Label" parent="CanvasLayer/Control"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "ksljgksg"
 
 [node name="start" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -915,7 +907,7 @@ stretch_mode = 2
 margin_left = 347.0
 margin_top = 463.0
 margin_right = 681.0
-margin_bottom = 500.02
+margin_bottom = 500.03
 custom_fonts/font = ExtResource( 23 )
 text = "press space to begin!"
 
@@ -982,6 +974,10 @@ color = Color( 0.47451, 0.545098, 0.658824, 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/fade"]
 anims/RESET = SubResource( 13 )
 anims/fade = SubResource( 14 )
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+autoplay = true
 
 [connection signal="body_entered" from="building2/Area2D" to="." method="_on_building2_body_entered"]
 [connection signal="body_entered" from="building4/Area2D" to="." method="_on_ending_body_entered"]

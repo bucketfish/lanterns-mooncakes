@@ -42,6 +42,7 @@ var wasonfloor = true
 var rng = RandomNumberGenerator.new()
 
 onready var jumpsound = $AudioStreamPlayer
+onready var jump = $jump
 var prev_floor = true
 
 func _ready():
@@ -71,18 +72,14 @@ func get_input(delta):
 	if state == "falling" && onfloor:
 		set_state("land")
 		
-#	if (onfloor) && !touching:
-#		touching = true
+	if onfloor && !touching:
+		touching = true
 #		set_state("land")
-#		jumpsound.stream = pianosounds[rng.randi_range(0, 7)]
-#		jumpsound.play()
-		
-#	if (onfloor || leftwall || rightwall) && !touching:
-#		touching = true
-##		jumpsound.play()
+		jumpsound.play()
+
 #
-#	if !onfloor && !leftwall && !rightwall:
-#		touching = false
+	if !onfloor:
+		touching = false
 		
 	#direction of player
 	var dir = 0
@@ -119,7 +116,10 @@ func get_input(delta):
 	
 	if Input.is_action_just_pressed("jump"):
 		if (onfloor && state != "jumping") || (!doubled && candouble):
+			
 			set_state("jumping")
+			
+			jump.play()
 
 			doubled = false
 			
